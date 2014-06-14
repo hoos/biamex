@@ -1,4 +1,4 @@
-biamex
+Biamex
 ======
 
 The Biomedical Algorithmic Exchange 
