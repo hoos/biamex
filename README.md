@@ -7,7 +7,7 @@ Biamex Web Application: http://jbosseap-biamex.rhcloud.com/
 
 Biamex Continuous Integration: http://jenkins-biamex.rhcloud.com/
 
-Clooud Development
+Cloud Development
 ------------------
 
 The Biamex source code is freely available via GitHub under the GPL V3 license.
