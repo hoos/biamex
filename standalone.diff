@@ -1,0 +1,48 @@
+diff --git a/.openshift/config/standalone.xml b/.openshift/config/standalone.xml
+index 484919a..dd69bdd 100644
+--- a/.openshift/config/standalone.xml
++++ b/.openshift/config/standalone.xml
+@@ -32,6 +32,7 @@
+ 		<extension module="org.jboss.as.web" />
+ 		<extension module="org.jboss.as.webservices" />
+ 		<extension module="org.jboss.as.weld" />
++		<extension module="org.switchyard"/>
+ 	</extensions>
+ 	
+ 	<system-properties>
+@@ -496,6 +497,27 @@
+ 			</endpoint-config>
+ 		</subsystem>
+ 		<subsystem xmlns="urn:jboss:domain:weld:1.0" />
++		<subsystem xmlns="urn:jboss:domain:switchyard:1.0">
++            <socket-binding names="switchyard-ws"/>
++            <modules>
++                <module identifier="org.switchyard.component.bean" implClass="org.switchyard.component.bean.deploy.BeanComponent"/>
++                <module identifier="org.switchyard.component.soap" implClass="org.switchyard.component.soap.deploy.SOAPComponent">
++                    <properties>
++                        <socketAddr>$switchyard-ws</socketAddr>
++                    </properties>
++                </module>
++                <module identifier="org.switchyard.component.camel" implClass="org.switchyard.component.camel.deploy.CamelComponent">
++                    <properties>
++                        <socketAddr>$switchyard-ws</socketAddr>
++                    </properties>
++                </module>
++                <module identifier="org.switchyard.component.rules" implClass="org.switchyard.component.rules.deploy.RulesComponent"/>
++                <module identifier="org.switchyard.component.bpm" implClass="org.switchyard.component.bpm.deploy.BPMComponent"/>
++                <module identifier="org.switchyard.component.bpel" implClass="org.switchyard.component.bpel.deploy.BPELComponent"/>
++                <module identifier="org.switchyard.component.resteasy" implClass="org.switchyard.component.resteasy.deploy.RESTEasyComponent"/>
++                <module identifier="org.switchyard.component.http" implClass="org.switchyard.component.http.deploy.HttpComponent"/>
++            </modules>
++        </subsystem>
+ 	</profile>
+ 
+ 	<interfaces>
+@@ -534,6 +556,7 @@
+ 		<socket-binding name="remoting" port="4447" />
+ 		<socket-binding name="txn-recovery-environment" port="4712" />
+ 		<socket-binding name="txn-status-manager" port="4713" />
++		<socket-binding name="switchyard-ws" port="18001"/>
+ 		<outbound-socket-binding name="mail-smtp">
+ 			<remote-destination host="localhost" port="25" />
+ 		</outbound-socket-binding>
