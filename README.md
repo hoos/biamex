@@ -68,6 +68,17 @@ the pom.xml's profile from
 
     <id>switchyard</id>
 
-to
+We encourage developers to create an openshift account if they want to make use of the Biamex cloud facilties.
 
-    <id>openshift</id>
+You can create an account at: http://www.openshift.com/
+
+Once you have created and account you can send a request to join the core development team which will give you access to the cloud services.
+
+You will need to identify your personal SSH Key via the openshift website and then you can checkout the code and begin developing.
+
+```
+cd workspace
+git clone ssh://<YourSSHKey>@helloworldwebapp-biamex.rhcloud.com/~/git/helloworldwebapp.git/
+```
+
+>>>>>>> 5369f9d4c81c7a9de131a24cd485c4479dac8765
